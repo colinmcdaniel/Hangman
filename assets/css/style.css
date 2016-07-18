@@ -1,3 +1,109 @@
-#output{
-	letter-spacing:5px;
+body{
+	background-image:url("../images/background.jpg");
+	background-size: 100% auto;
+	font-family:Impact, Charcoal, sans-serif;
+	color:white;
+}
+
+#wrapper{
+	width:750px;
+	margin:0 auto;
+	overflow:auto;
+}
+
+header{
+	overflow:auto;
+}
+
+img{
+	zoom:3%;
+	border:100px solid white;
+	margin:250px;
+}
+
+#oscar-left{
+	float:left;
+}
+
+#header-text{
+	float:right;
+	margin-right:35px;
+}
+
+h1{
+	font-size:110px;
+}
+
+h2{
+	font-size:32px;
+}
+
+#main{
+	overflow:auto;
+	padding:50px 0;
+}
+
+#oscar-right{
+	float:right;
+}
+
+#main-right{
+	width:310px;
+	height:310px;
+	float:right;
+	text-align:center;
+	border: 2px dotted white;
+	padding:20px;
+}
+
+#main-left{
+	width:310px;
+	height:310px;
+	float:left;
+	border: 2px dotted white;
+	padding:20px;
+}
+
+div{
+	font-size:18px;
+}
+
+#intro{
+	padding-bottom:20px;
+}
+
+#wins-title{
+	padding: 5px;
+}
+
+#wins{
+	padding-bottom:20px;
+}
+
+#word-title{
+	padding:5px;
+}
+
+#word{
+	letter-spacing:10px;
+	padding-bottom:25px;
+	font-size:30px;
+	padding-left:10px;
+	text-transform: uppercase;
+}
+
+#num-guesses-title{
+	padding:5px;
+}
+
+#num-guesses{
+	padding-bottom:20px;
+}
+
+#letters-title{
+	padding:5px;
+}
+
+#letters{
+	text-transform: uppercase;
 }

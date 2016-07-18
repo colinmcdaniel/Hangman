@@ -18,7 +18,17 @@ function inArray(str,arr) {
 }
 
 // Sets possible movies in a random order (for every new game)
-var movies = ['scream','halloween','psycho','nosferatu','jaws','poltergeist','alien','carrie','frankenstein','dracula'];
+var movies = ['scream',
+	'halloween',
+	'psycho',
+	'nosferatu',
+	'jaws',
+	'poltergeist',
+	'alien',
+	'carrie',
+	'frankenstein',
+	'dracula'];
+
 movies = shuffleArray(movies);
 
 // Defining variables
@@ -34,12 +44,40 @@ for(i = 0; i < movies[wordNumber].length; i++)
 	displayedWord = displayedWord + "_";
 
 // Initial screen output
-var outputStr = "Press any key to get started!<br><br><br>Wins<br><br>" + wins
-	+ "<br><br><br>Current word<br><br>" + displayedWord
-	+ "<br><br><br>Number of guesses remaining<br><br>" + guessesRemaining
-	+ "<br><br><br>Letters already guessed<br><br>" + displayedGuesses;
-var output = document.getElementById("output");
-	output.innerHTML = outputStr;
+var introOut = document.getElementById("intro");
+introOut.innerHTML = "Press any key to get started!";
+
+var winsTitleOut = document.getElementById("wins-title");
+winsTitleOut.innerHTML = "Wins";
+
+var winsOut = document.getElementById("wins");
+winsOut.innerHTML = wins;
+
+var wordTitleOut = document.getElementById("word-title");
+wordTitleOut.innerHTML = "Current word";
+
+var wordOut = document.getElementById("word");
+wordOut.innerHTML = displayedWord;
+
+var numGuessesTitleOut = document.getElementById("num-guesses-title");
+numGuessesTitleOut.innerHTML = "Number of guesses remaining";
+
+var numGuessesOut = document.getElementById("num-guesses");
+numGuessesOut.innerHTML = guessesRemaining;
+
+var lettersTitleOut = document.getElementById("letters-title");
+lettersTitleOut.innerHTML = "Letters already guessed";
+
+var lettersOut = document.getElementById("letters");
+lettersOut.innerHTML = displayedGuesses;
+
+
+
+
+
+
+
+
 
 // Captures key up
 document.onkeyup = function(event) {
@@ -62,15 +100,12 @@ document.onkeyup = function(event) {
 			displayedGuesses = displayedGuesses + letter;
 		}
 
-		var outputStr = "Press any key to get started!<br><br><br>Wins<br><br>" + wins
-			+ "<br><br><br>Current word<br><br>" + displayedWord
-			+ "<br><br><br>Number of guesses remaining<br><br>" + guessesRemaining
-			+ "<br><br><br>Letters already guessed<br><br>" + displayedGuesses;
-		if(guessesRemaining <= 0)
-			var outputStr = outputStr + "<br><br><br>YOU LOSE!!! Refresh page for a new game.";
+		wordOut.innerHTML = displayedWord;
+		numGuessesOut.innerHTML = guessesRemaining;
+		lettersOut.innerHTML = displayedGuesses;
 
-		var output = document.getElementById("output");
-		output.innerHTML = outputStr;
+		if(guessesRemaining <= 0)
+			introOut.innerHTML = "YOU LOSE!!! Refresh page for a new game.";
 
 		if(movies[wordNumber] == displayedWord && wordNumber < movies.length - 1){
 			wins++;
@@ -86,24 +121,18 @@ document.onkeyup = function(event) {
 					displayedWord = displayedWord + "_";
 			}
 
-			var outputStr = "Press any key to get started!<br><br><br>Wins<br><br>" + wins
-				+ "<br><br><br>Current word<br><br>" + displayedWord
-				+ "<br><br><br>Number of guesses remaining<br><br>" + guessesRemaining
-				+ "<br><br><br>Letters already guessed<br><br>" + displayedGuesses;
-			var output = document.getElementById("output");
-			output.innerHTML = outputStr;
+			winsOut.innerHTML = wins;
+			wordOut.innerHTML = displayedWord;
+			numGuessesOut.innerHTML = guessesRemaining;
+			lettersOut.innerHTML = displayedGuesses;
 		}
 		else if(movies[wordNumber] == displayedWord && wordNumber == movies.length - 1){
 			wins++
 
-			var outputStr = "Press any key to get started!<br><br><br>Wins<br><br>" + wins
-				+ "<br><br><br>Current word<br><br>" + displayedWord
-				+ "<br><br><br>Number of guesses remaining<br><br>" + guessesRemaining
-				+ "<br><br><br>Letters already guessed<br><br>" + displayedGuesses;
-			var outputStr = outputStr + "<br><br>YOU WIN!!! Refresh page for a new game.";
+			winsOut.innerHTML = wins;
 
-			var output = document.getElementById("output");
-			output.innerHTML = outputStr;
+			// USE APPENDCHILD FOR THIS AND FOR LOSES TOO
+			introOut.innerHTML = "YOU WIN!!! Refresh page for a new game.";
 		}
 	}
 }
