@@ -15,13 +15,10 @@ header{
 	overflow:auto;
 }
 
-img{
+#oscar-left{
 	zoom:3%;
 	border:100px solid white;
 	margin:250px;
-}
-
-#oscar-left{
 	float:left;
 }
 
@@ -44,12 +41,15 @@ h2{
 }
 
 #oscar-right{
+	zoom:3%;
+	border:100px solid white;
+	margin:250px;
 	float:right;
 }
 
 #main-right{
 	width:310px;
-	height:310px;
+	height:360px;
 	float:right;
 	text-align:center;
 	border: 2px dotted white;
@@ -58,10 +58,15 @@ h2{
 
 #main-left{
 	width:310px;
-	height:310px;
+	height:360px;
 	float:left;
 	border: 2px dotted white;
 	padding:20px;
+}
+
+#left-image{
+	width:100%;
+	height:100%;
 }
 
 div{
@@ -77,6 +82,14 @@ div{
 }
 
 #wins{
+	padding-bottom:10px;
+}
+
+#losses-title{
+	padding:5px;
+}
+
+#losses{
 	padding-bottom:20px;
 }
 

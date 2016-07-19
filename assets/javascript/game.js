@@ -33,6 +33,7 @@ movies = shuffleArray(movies);
 
 // Defining variables
 var wins = 0;
+var losses = 0;
 var wordNumber = 0;
 var displayedWord = "";
 var guessesRemaining = 12;
@@ -53,6 +54,12 @@ winsTitleOut.innerHTML = "Wins";
 var winsOut = document.getElementById("wins");
 winsOut.innerHTML = wins;
 
+var lossesTitleOut = document.getElementById("losses-title");
+lossesTitleOut.innerHTML = "Losses";
+
+var lossesOut = document.getElementById("losses");
+lossesOut.innerHTML = losses;
+
 var wordTitleOut = document.getElementById("word-title");
 wordTitleOut.innerHTML = "Current word";
 
@@ -60,7 +67,7 @@ var wordOut = document.getElementById("word");
 wordOut.innerHTML = displayedWord;
 
 var numGuessesTitleOut = document.getElementById("num-guesses-title");
-numGuessesTitleOut.innerHTML = "Number of guesses remaining";
+numGuessesTitleOut.innerHTML = "Guesses remaining";
 
 var numGuessesOut = document.getElementById("num-guesses");
 numGuessesOut.innerHTML = guessesRemaining;
@@ -71,13 +78,7 @@ lettersTitleOut.innerHTML = "Letters already guessed";
 var lettersOut = document.getElementById("letters");
 lettersOut.innerHTML = displayedGuesses;
 
-
-
-
-
-
-
-
+var leftImage = document.getElementById("left-image");
 
 // Captures key up
 document.onkeyup = function(event) {
@@ -85,8 +86,8 @@ document.onkeyup = function(event) {
 	// Determines which letter the user pressed and makes it lowercase
 	var letter = String.fromCharCode(event.keyCode).toLowerCase();
 
-	// While the letter has not already been guessed...
-	if(!inArray(letter,lettersGuessed)){
+	// While letter is a real letter and has not already been guessed...
+	if(!inArray(letter,lettersGuessed) && letter.match(/[a-z]/i)){
 		lettersGuessed.push(letter);
 
 		if(movies[wordNumber].indexOf(letter) >= 0){
@@ -97,15 +98,32 @@ document.onkeyup = function(event) {
 		}
 		else{
 			guessesRemaining--;
-			displayedGuesses = displayedGuesses + letter;
+			leftImage.src = "assets/images/" + guessesRemaining + ".jpg";
+
+			if(guessesRemaining == 0){
+				losses++;
+				wordNumber = 0;
+				displayedWord = "";
+				guessesRemaining = 12;
+				lettersGuessed = [];
+				displayedGuesses = "";
+
+				// Sets displayed word to correct number of characters
+				if(wordNumber != movies.length){
+					for(i = 0; i < movies[wordNumber].length; i++)
+						displayedWord = displayedWord + "_";
+				}
+
+				lossesOut.innerHTML = losses;
+			}
+			else{
+				displayedGuesses = displayedGuesses + letter;
+			}
 		}
 
 		wordOut.innerHTML = displayedWord;
 		numGuessesOut.innerHTML = guessesRemaining;
 		lettersOut.innerHTML = displayedGuesses;
-
-		if(guessesRemaining <= 0)
-			introOut.innerHTML = "YOU LOSE!!! Refresh page for a new game.";
 
 		if(movies[wordNumber] == displayedWord && wordNumber < movies.length - 1){
 			wins++;
