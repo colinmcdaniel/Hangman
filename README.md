@@ -1,6 +1,6 @@
 # Hangman
 
-* [Deployed Application Link](https://moviehangman.herokuapp.com/)
+* [Deployed Application](https://moviehangman.herokuapp.com/)
 * [GitHub Repository](https://github.com/colinmcdaniel/Hangman)
 
 ## Functionality
